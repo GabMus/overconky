@@ -1,0 +1,115 @@
+-- vim: ts=4 sw=4 noet ai cindent syntax=lua
+--[[
+Conky, a system monitor, based on torsmo
+
+Any original torsmo code is licensed under the BSD license
+
+All code written since the fork of torsmo is licensed under the GPL
+
+Please see COPYING for details
+
+Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+Copyright (c) 2005-2012 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+All rights reserved.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+]]
+
+conky.config = {
+    alignment = 'top_left',
+    background = false,
+    border_width = 3,
+    cpu_avg_samples = 2,
+	default_color = '#3977d5',
+    default_outline_color = 'white',
+    default_shade_color = 'white',
+    draw_borders = true,
+    draw_graph_borders = true,
+    draw_outline = false,
+    draw_shades = false,
+    double_buffer = true,
+    use_xft = true,
+    font = 'monofur for Powerline:size=14',
+    gap_x = 4020,
+    gap_y = 420,
+    minimum_height = 5,
+	minimum_width = 5,
+    net_avg_samples = 2,
+    no_buffers = false,
+    out_to_console = false,
+    out_to_stderr = false,
+    extra_newline = false,
+    own_window = true,
+	own_window_transparent = false,
+    own_window_argb_visual = true,
+    own_window_argb_value = 130,
+    own_window_class = 'Conky',
+    own_window_type = 'desktop',
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    stippled_borders = 0,
+    update_interval = 2.0,
+    uppercase = false,
+    use_spacer = 'none',
+    show_graph_scale = false,
+    show_graph_range = false,
+    minimum_width = 420,
+    maximum_width = 420,
+    border_inner_margin = 20,
+    short_units = true,
+    lua_load = './conky_draw.lua',
+    lua_draw_hook_post = 'main'
+}
+--[[${image /home/gabmus/.conkyassets/bg2.png -p 0,0}]]
+conky.text = [[
+${image ./conkyassets/logoBinary.png -p 5,0 -s 22x22}    $nodename - $sysname $kernel
+
+${color #FFFFFF}Uptime:$color $uptime
+
+${color #FFFFFF}CLK:$color $freq MHz
+$alignc${color #FFFFFF}CPU0 CPU1 CPU2 CPU3 CPU4 CPU5 CPU6 CPU7
+$alignc$color${cpugraph cpu1 50,40} ${cpugraph cpu2 50,40} ${cpugraph cpu3 50,40} ${cpugraph cpu4 50,40} ${cpugraph cpu5 50,40} ${cpugraph cpu6 50,40} ${cpugraph cpu7 50,40} ${cpugraph cpu8 50,40}
+
+
+${image ./conkyassets/cpu.png -p 27,200 -s 20x20}\
+${goto 50}${color #FFFFFF}CPU: $color${cpu cpu0}%\
+${image ./conkyassets/ram.png -p 137,200 -s 20x20}\
+${goto 160}${color #FFFFFF}RAM: $color$memperc%\
+${image ./conkyassets/harddisk.png -p 247,200 -s 20x20}\
+${goto 270}$color${fs_free /}\
+${image ./conkyassets/home.png -p 357,200 -s 20x20}\
+${goto 380}$color${fs_free /home}
+
+${image ./conkyassets/temps.png -p 5,285 -s 35x35}\
+${color #FFFFFF}Temperatures:
+$alignc${color #FFFFFF}CPU0     CPU1     CPU2     CPU3
+$alignc$color${platform coretemp.0/hwmon/hwmon0 temp 1 input} °C\
+    ${platform coretemp.0/hwmon/hwmon0 temp 2 input} °C\
+    ${platform coretemp.0/hwmon/hwmon0 temp 3 input} °C\
+    ${platform coretemp.0/hwmon/hwmon0 temp 4 input} °C
+
+${color #FFFFFF}SWP:$color $swap/$swapmax
+     $swapperc%${alignc}${swapbar 6,150}
+${color #FFFFFF}Processes:$color $processes  ${color #FFFFFF}Running:$color $running_processes
+
+${color #FFFFFF}Networking:
+${image ./conkyassets/wifi.png -p 0,430 -s 20x20}   ${color #FFFFFF}\
+↑$color ${upspeed wlp5s0} ${color #FFFFFF}${alignr 150}$color ${downspeed wlp5s0}${color #FFFFFF}↓
+${image ./conkyassets/eth.png -p 0,450 -s 20x20}   ${color #FFFFFF}\
+↑$color ${upspeed enp0s31f6} ${color #FFFFFF}${alignr 150}$color ${downspeed enp0s31f6}${color #FFFFFF}↓
+
+${color #FFFFFF}Name              PID   CPU%   MEM%
+${color}${top name 1}${top pid 1} ${top cpu 1} ${top mem 1}
+${color}${top name 2}${top pid 2} ${top cpu 2} ${top mem 2}
+${color}${top name 3}${top pid 3} ${top cpu 3} ${top mem 3}
+${color}${top name 4}${top pid 4} ${top cpu 4} ${top mem 4}
+]]
