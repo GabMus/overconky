@@ -30,16 +30,16 @@ conky.config = {
     background = false,
     border_width = 3,
     cpu_avg_samples = 2,
-	default_color = '#3977d5',
+	default_color = '#00F088',
     default_outline_color = 'white',
     default_shade_color = 'white',
-    draw_borders = true,
+    draw_borders = false,
     draw_graph_borders = true,
     draw_outline = false,
     draw_shades = false,
     double_buffer = true,
     use_xft = true,
-    font = 'monofur for Powerline:size=14',
+    font = 'AnonymicePowerline Nerd Font:size=13',
     gap_x = 4020,
     gap_y = 420,
     minimum_height = 5,
@@ -52,7 +52,7 @@ conky.config = {
     own_window = true,
 	own_window_transparent = false,
     own_window_argb_visual = true,
-    own_window_argb_value = 130,
+    own_window_argb_value = 0,
     own_window_class = 'Conky',
     own_window_type = 'desktop',
     own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
@@ -63,7 +63,6 @@ conky.config = {
     show_graph_scale = false,
     show_graph_range = false,
     minimum_width = 420,
-    maximum_width = 420,
     border_inner_margin = 20,
     short_units = true,
     lua_load = './conky_draw.lua',
@@ -71,41 +70,35 @@ conky.config = {
 }
 --[[${image /home/gabmus/.conkyassets/bg2.png -p 0,0}]]
 conky.text = [[
-${image ./conkyassets/logoBinary.png -p 5,0 -s 22x22}    $nodename - $sysname $kernel
+${color #FFFFFF} $color $nodename ${color #FFFFFF}-$color $sysname $kernel
 
 ${color #FFFFFF}Uptime:$color $uptime
 
-${color #FFFFFF}CLK:$color $freq MHz
-$alignc${color #FFFFFF}CPU0 CPU1 CPU2 CPU3 CPU4 CPU5 CPU6 CPU7
-$alignc$color${cpugraph cpu1 50,40} ${cpugraph cpu2 50,40} ${cpugraph cpu3 50,40} ${cpugraph cpu4 50,40} ${cpugraph cpu5 50,40} ${cpugraph cpu6 50,40} ${cpugraph cpu7 50,40} ${cpugraph cpu8 50,40}
 
+${goto 116}$color$memperc%
 
-${image ./conkyassets/cpu.png -p 27,200 -s 20x20}\
-${goto 50}${color #FFFFFF}CPU: $color${cpu cpu0}%\
-${image ./conkyassets/ram.png -p 137,200 -s 20x20}\
-${goto 160}${color #FFFFFF}RAM: $color$memperc%\
-${image ./conkyassets/harddisk.png -p 247,200 -s 20x20}\
-${goto 270}$color${fs_free /}\
-${image ./conkyassets/home.png -p 357,200 -s 20x20}\
-${goto 380}$color${fs_free /home}
+${goto 295}$color${fs_free /}\
+${goto 395}$color${fs_free /home}
+${color #FFFFFF}CLK:$color $freq MHz\
+${goto 220}$color${cpu cpu0}%
+$color${cpugraph cpu1 50,40} ${cpugraph cpu2 50,40} ${cpugraph cpu3 50,40} ${cpugraph cpu4 50,40}    ${cpugraph cpu5 50,40} ${cpugraph cpu6 50,40} ${cpugraph cpu7 50,40} ${cpugraph cpu8 50,40}
 
-${image ./conkyassets/temps.png -p 5,285 -s 35x35}\
+${image ./conkyassets/cpu.png -p 195,110 -s 20x20}\
+${image ./conkyassets/ram.png -p 52,96 -s 20x20}\
+${image ./conkyassets/harddisk.png -p 296,96 -s 20x20}\
+${image ./conkyassets/home.png -p 369,96 -s 20x20}\
+\
+${image ./conkyassets/temps.png -p 5,255 -s 35x35}\
 ${color #FFFFFF}Temperatures:
-$alignc${color #FFFFFF}CPU0     CPU1     CPU2     CPU3
-$alignc$color${platform coretemp.0/hwmon/hwmon0 temp 1 input} °C\
-    ${platform coretemp.0/hwmon/hwmon0 temp 2 input} °C\
-    ${platform coretemp.0/hwmon/hwmon0 temp 3 input} °C\
-    ${platform coretemp.0/hwmon/hwmon0 temp 4 input} °C
-
-${color #FFFFFF}SWP:$color $swap/$swapmax
-     $swapperc%${alignc}${swapbar 6,150}
-${color #FFFFFF}Processes:$color $processes  ${color #FFFFFF}Running:$color $running_processes
+     ${color #FFFFFF}CPU0     CPU1     CPU2     CPU3
+     $color${platform coretemp.0/hwmon/hwmon1 temp 1 input} °C\
+    ${platform coretemp.0/hwmon/hwmon1 temp 2 input} °C\
+    ${platform coretemp.0/hwmon/hwmon1 temp 3 input} °C\
+    ${platform coretemp.0/hwmon/hwmon1 temp 4 input} °C
 
 ${color #FFFFFF}Networking:
-${image ./conkyassets/wifi.png -p 0,430 -s 20x20}   ${color #FFFFFF}\
-↑$color ${upspeed wlp5s0} ${color #FFFFFF}${alignr 150}$color ${downspeed wlp5s0}${color #FFFFFF}↓
-${image ./conkyassets/eth.png -p 0,450 -s 20x20}   ${color #FFFFFF}\
-↑$color ${upspeed enp0s31f6} ${color #FFFFFF}${alignr 150}$color ${downspeed enp0s31f6}${color #FFFFFF}↓
+${image ./conkyassets/eth.png -p 0,320 -s 20x20}   ${color #FFFFFF}\
+$color ${upspeed enp0s31f6} ${color #FFFFFF}${alignr 250}$color ${downspeed enp0s31f6}${color #FFFFFF} 
 
 ${color #FFFFFF}Name              PID   CPU%   MEM%
 ${color}${top name 1}${top pid 1} ${top cpu 1} ${top mem 1}
