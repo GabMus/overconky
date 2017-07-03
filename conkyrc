@@ -26,7 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ]]
 
 conky.config = {
-    alignment = 'top_left',
+    alignment = 'top_right',
     background = false,
     border_width = 3,
     cpu_avg_samples = 2,
@@ -40,8 +40,8 @@ conky.config = {
     double_buffer = true,
     use_xft = true,
     font = 'AnonymicePowerline Nerd Font:size=13',
-    gap_x = 4020,
-    gap_y = 420,
+    gap_x = 0,
+    gap_y = 35,
     minimum_height = 5,
 	minimum_width = 5,
     net_avg_samples = 2,
@@ -88,17 +88,19 @@ ${image ./conkyassets/ram.png -p 52,96 -s 20x20}\
 ${image ./conkyassets/harddisk.png -p 296,96 -s 20x20}\
 ${image ./conkyassets/home.png -p 369,96 -s 20x20}\
 \
-${image ./conkyassets/temps.png -p 5,255 -s 35x35}\
+${image ./conkyassets/temps.png -p 5,280 -s 35x35}\
 ${color #FFFFFF}Temperatures:
      ${color #FFFFFF}CPU0     CPU1     CPU2     CPU3
-     $color${platform coretemp.0/hwmon/hwmon1 temp 1 input} °C\
-    ${platform coretemp.0/hwmon/hwmon1 temp 2 input} °C\
-    ${platform coretemp.0/hwmon/hwmon1 temp 3 input} °C\
-    ${platform coretemp.0/hwmon/hwmon1 temp 4 input} °C
+     $color${platform coretemp.0/hwmon/hwmon4 temp 1 input} °C\
+    ${platform coretemp.0/hwmon/hwmon4 temp 2 input} °C\
+    ${platform coretemp.0/hwmon/hwmon4 temp 3 input} °C\
+    ${platform coretemp.0/hwmon/hwmon4 temp 4 input} °C
 
 ${color #FFFFFF}Networking:
-${image ./conkyassets/eth.png -p 0,320 -s 20x20}   ${color #FFFFFF}\
-$color ${upspeed enp0s31f6} ${color #FFFFFF}${alignr 250}$color ${downspeed enp0s31f6}${color #FFFFFF} 
+${image ./conkyassets/eth.png -p 0,355 -s 20x20}   ${color #FFFFFF}\
+$color ${upspeed enp4s0} ${color #FFFFFF}${alignr 250}$color ${downspeed enp4s0}${color #FFFFFF} 
+${image ./conkyassets/wifi.png -p 0,375 -s 20x20}   ${color #FFFFFF}\
+$color ${upspeed wlp5s0} ${color #FFFFFF}${alignr 250}$color ${downspeed elp5s0}${color #FFFFFF} 
 
 ${color #FFFFFF}Name              PID   CPU%   MEM%
 ${color}${top name 1}${top pid 1} ${top cpu 1} ${top mem 1}
