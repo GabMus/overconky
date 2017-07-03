@@ -10,11 +10,11 @@ elements = {
         center = {x = 229, y = 175},
         radius = 50,
 
-        background_color = 0x00F088,
+        background_color = 0xFF0000,
         background_alpha = 0.5,
         background_thickness = 10,
 
-        bar_color = 0x00F088,
+        bar_color = 0xFF0000,
         bar_alpha = 1,
         bar_thickness = 10,
 
@@ -33,11 +33,11 @@ elements = {
         center = {x = 86, y = 130},
         radius = 20,
 
-        background_color = 0x00F088,
+        background_color = 0xFF0000,
         background_alpha = 0.5,
         background_thickness = 8,
 
-        bar_color = 0x00F088,
+        bar_color = 0xFF0000,
         bar_alpha = 1,
         bar_thickness = 8,
 
@@ -56,11 +56,11 @@ elements = {
         center = {x = 366, y = 130},
         radius = 20,
 
-        background_color = 0x00F088,
+        background_color = 0xFF0000,
         background_alpha = 0.5,
         background_thickness = 8,
 
-        bar_color = 0x00F088,
+        bar_color = 0xFF0000,
         bar_alpha = 1,
         bar_thickness = 8,
 
@@ -68,9 +68,9 @@ elements = {
         end_angle = 270,
         
         background_thickness_critical = 8,
-        background_color_critical = 0x00F088,
+        background_color_critical = 0xFF0000,
         bar_thickness_critical = 8,
-        bar_color_critical = 0x00F088
+        bar_color_critical = 0xFF0000
     },
     
     { --homefs ring
@@ -79,12 +79,12 @@ elements = {
         center = {x = 368, y = 130},
         radius = 20,
 
-        background_color = 0x00F088,
+        background_color = 0xFF0000,
         background_alpha = 0.5,
         background_alpha_critical = 0.5,
         background_thickness = 8,
 
-        bar_color = 0x00F088,
+        bar_color = 0xFF0000,
         bar_alpha = 1,
         bar_thickness = 8,
 
@@ -92,8 +92,8 @@ elements = {
         end_angle = -90,
         
         background_thickness_critical = 8,
-        background_color_critical = 0x00F088,
+        background_color_critical = 0xFF0000,
         bar_thickness_critical = 8,
-        bar_color_critical = 0x00F088
+        bar_color_critical = 0xFF0000
     },
 }
